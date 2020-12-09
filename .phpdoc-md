@@ -1,0 +1,45 @@
+<?php
+
+use Jumbodroid\HL7;
+use Jumbodroid\HL7\Segments\PV1;
+use Jumbodroid\HL7\Segments\ORC;
+use Jumbodroid\HL7\Segments\OBX;
+use Jumbodroid\HL7\Segments\OBR;
+use Jumbodroid\HL7\Segments\DG1;
+use Jumbodroid\HL7\Segments\NTE;
+use Jumbodroid\HL7\Segments\IN3;
+use Jumbodroid\HL7\Segments\IN1;
+use Jumbodroid\HL7\Segments\PID;
+use Jumbodroid\HL7\Segments\MSH;
+use Jumbodroid\HL7\Segments\EVN;
+use Jumbodroid\HL7\Segments\EQU;
+use Jumbodroid\HL7\Segments\SAC;
+use Jumbodroid\HL7\Segment;
+use Jumbodroid\HL7\Messages\ACK;
+use Jumbodroid\HL7\Message;
+use Jumbodroid\HL7\Connection;
+
+return (object)[
+    'rootNamespace' => HL7::class,
+    'destDirectory' => 'docs',
+    'format' => 'github',
+    'classes' => [
+        Connection::class,
+        Message::class,
+        ACK::class,
+        Segment::class,
+        MSH::class,
+        PID::class,
+        IN1::class,
+        IN3::class,
+        NTE::class,
+        DG1::class,
+        OBR::class,
+        OBX::class,
+        ORC::class,
+        PV1::class,
+        EVN::class,
+        EQU::class,
+        SAC::class,
+    ],
+];

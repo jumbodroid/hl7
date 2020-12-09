@@ -1,0 +1,46 @@
+{
+    "name": "jumbodroid/hl7",
+    "description": "HL7 Library for PHP.",
+    "type": "library",
+    "license": "MIT",
+    "keyword": ["HL7", "PHP"],
+    "authors": [
+        {
+            "name": "Alois Odhiambo",
+            "email": "rayalois22@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable" : true,
+    "require": {
+        "php": ">=7.3",
+        "ext-sockets": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3",
+        "ext-pcntl": "*",
+        "dms/phpunit-arraysubset-asserts": "^0.2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jumbodroid\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jumbodroid\\HL7\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x.x-dev"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    }
+}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Aranyasen;
+namespace Jumbodroid;
 
 use InvalidArgumentException;
 use Jumbodroid\HL7\Message;

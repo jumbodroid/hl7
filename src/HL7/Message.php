@@ -68,8 +68,8 @@ class Message
     {
         if(!empty($msgStr))
         {
-            $msgStr = preg_replace("/(\n +)/g", "\n", $msgStr);
-            $msgStr = preg_replace("/(\r +)/g", "\r", $msgStr);
+            $msgStr = preg_replace("/(\n +)/", "\n", $msgStr);
+            $msgStr = preg_replace("/(\r +)/", "\r", $msgStr);
         }
         
         // Array holding the segments

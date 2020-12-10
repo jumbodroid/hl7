@@ -17,7 +17,8 @@ class ACK extends Message
      * $ack = new ACK($requestMessage);
      * ```
      *
-     * Convenience module implementing an acknowledgement (ACK) message. This can be used in HL7 servers to create an
+     * Convenience module implementing an acknowledgement (ACK) message. 
+     * This can be used in HL7 servers to create an
      * acknowledgement for an incoming message.
      *
      * @param Message|null $req
@@ -30,29 +31,34 @@ class ACK extends Message
     {
         parent::__construct(null, $hl7Globals);
 
-        if ($req) {
+        if ($req) 
+        {
             $msh = $req->getSegmentByIndex(0);
 
-            if ($msh) {
+            if ($msh) 
+            {
                 $msh = new MSH($msh->getFields(1));
             }
-            else {
+            else 
+            {
                 $msh = new MSH();
             }
         }
-        else {
+        else 
+        {
             $msh = new MSH();
         }
 
         $msa = new MSA();
 
-        // Determine acknowledge mode: normal or enhanced
-        //
-        if ($req && ($msh->getField(15) || $msh->getField(16))) {
+        /*/ Determine acknowledge mode: normal or enhanced /*/
+        if ($req && ($msh->getField(15) || $msh->getField(16))) 
+        {
             $this->ACK_TYPE = 'E';
             $msa->setAcknowledgementCode('CA');
         }
-        else {
+        else 
+        {
             $this->ACK_TYPE = 'N';
             $msa->setAcknowledgementCode('AA');
         }
@@ -62,8 +68,9 @@ class ACK extends Message
 
         $msh->setField(9, 'ACK');
 
-        // Construct an ACK based on the request
-        if ($req && $reqMsh) {
+        /*/ Construct an ACK based on the request /*/
+        if ($req && $reqMsh) 
+        {
             $msh->setField(3, $reqMsh->getReceivingApplication());
             $msh->setField(4, $reqMsh->getReceivingFacility());
             $msh->setField(5, $reqMsh->getSendingApplication());
@@ -88,21 +95,26 @@ class ACK extends Message
     {
         $mode = 'A';
 
-        // Determine acknowledge mode: normal or enhanced
-        //
-        if ($this->ACK_TYPE === 'E') {
+        /*/ Determine acknowledge mode: normal or enhanced /*/
+        if ($this->ACK_TYPE === 'E') 
+        {
             $mode = 'C';
         }
 
-        if (\strlen($code) === 1) {
+        if (\strlen($code) === 1) 
+        {
             $code = "$mode$code";
         }
 
         $seg1 = $this->getSegmentByIndex(1);
-        if (!empty($seg1)) {
+        
+        if (!empty($seg1)) 
+        {
             $seg1->setField(1, $code);
         }
-        if ($msg) {
+        
+        if ($msg) 
+        {
             $seg1->setField(3, $msg);
         }
 

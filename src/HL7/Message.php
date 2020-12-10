@@ -66,10 +66,10 @@ class Message
      */
     public function __construct(string $msgStr = null, array $hl7Globals = null, bool $keepEmptySubFields = false, bool $resetIndices = false, bool $autoIncrementIndices = true)
     {
-        // trim $msgStr
         if(!empty($msgStr))
         {
-            $msgStr = str_replace(" ", "", $msgStr);
+            $msgStr = preg_replace("/(\n +)/g", "\n", $msgStr);
+            $msgStr = preg_replace("/(\r +)/g", "\r", $msgStr);
         }
         
         // Array holding the segments
